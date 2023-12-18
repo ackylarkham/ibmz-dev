@@ -1,0 +1,49 @@
+#
+# IBM Z アプリケーション開発環境コンテナー
+#
+
+# Dockerhub公式イメージからibm-semeru-runtimes Java 17 JDKイメージを利用
+FROM ibm-semeru-runtimes:open-17-jdk-focal
+
+# 環境変数
+ENV DEBIAN_FRONTEND=noninteractive \  
+    LANG=ja_JP.UTF-8 \
+    LANGUAGE=ja_JP:ja \ 
+    TZ=Asia/Tokyo
+
+# パッケージのインストール
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y \
+    fonts-takao \
+    language-pack-ja-base \
+    language-pack-ja \
+    locales \
+    sudo \
+    tzdata \
+    xdg-user-dirs \
+    nodejs \
+    npm \
+    && \
+# ロケールの生成
+    locale-gen ja_JP.UTF-8 \
+    && \
+# Clean up
+    apt-get clean && \
+    rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+
+# 日本語フォルダ名を英語に改名
+RUN LANG=C xdg-user-dirs-update --force
+
+# sudo可能な一般ユーザーを追加
+ARG USERNAME=user
+ARG GROUPNAME=user
+ARG UID=1000
+ARG GID=1000
+ARG PASSWORD=user
+RUN groupadd -g $GID $GROUPNAME && \
+    useradd -m -s /bin/bash -u $UID -g $GID -G sudo $USERNAME && \
+    echo $USERNAME:$PASSWORD | chpasswd && \
+    echo "$USERNAME   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+USER $USERNAME
+
+WORKDIR /home/$USERNAME/
