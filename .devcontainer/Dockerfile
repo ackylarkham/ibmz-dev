@@ -15,14 +15,18 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     fonts-takao \
+    git \
+    iputils-ping \
+    iproute2 \    
     language-pack-ja-base \
     language-pack-ja \
+    libsecret-1-0 \    
     locales \
+    nodejs \
+    npm \    
     sudo \
     tzdata \
     xdg-user-dirs \
-    nodejs \
-    npm \
     && \
 # ロケールの生成
     locale-gen ja_JP.UTF-8 \
