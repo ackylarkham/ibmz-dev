@@ -1,0 +1,25 @@
+{
+	"name": "IBM Z開発環境",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"remoteUser": "user",
+	"workspaceFolder": "/home/user",
+	"customizations": {
+		"vscode": {
+			"settings": {										// VSCode設定
+				"zopeneditor.JAVA_HOME": "/opt/java/openjdk" 	//   IBM Z Open Editor JAVA_HOME 
+			},
+			"extensions": [										// VSCode機能拡張
+				"ms-ceintl.vscode-language-pack-ja", 			//	日本語言語パック
+                "ibm.zopeneditor",                          	//  IBM Z Open Editor
+				"vscode-icons-team.vscode-icons",				// 	vscode-icons
+				"streetsidesoftware.code-spell-checker",		// 	Code Spell Checker
+				"eamodio.gitlens",								// 	GitLens
+				"donjayamanne.githistory",						// 	Git History
+				"oderwat.indent-rainbow",						// 	indent-rainbow
+				"mosapride.zenkaku" 							// 	zenkaku
+			]
+		}	
+	}
+}
