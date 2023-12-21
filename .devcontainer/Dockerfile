@@ -21,7 +21,6 @@ RUN apt-get update && \
     iproute2 \    
     language-pack-ja-base \
     language-pack-ja \
-    libsecret \    
     locales \
     nodejs \
     npm \    
