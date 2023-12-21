@@ -16,11 +16,12 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     fonts-takao \
     git \
+    gnome-keyring \
     iputils-ping \
     iproute2 \    
     language-pack-ja-base \
     language-pack-ja \
-    libsecret-1-0 \    
+    libsecret \    
     locales \
     nodejs \
     npm \    
